@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  # Сервис с приложением
+  spring-app:
+    image: my-spring-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  # Сервис с базой данных (MySQL)
+  db:
+    image: mysql:8.0.28
+    environment:
+      MYSQL_DATABASE: todo
+      MYSQL_ROOT_PASSWORD: secret
+    ports:
+      - "3306:3306"
